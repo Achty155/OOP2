@@ -3,7 +3,7 @@ public class State {
     private String Name;
     private int NumOfVoters;
     private int NumOfElVOters;
-    private int democraticVotes = 0;
+    private int democraticVotes = 0; //test
     private int republicanVotes = 0;
     private int winnerInState = 0;
     private VotingStrategy votingStrategy;
