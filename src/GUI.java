@@ -18,6 +18,7 @@ public class GUI {
                     if (strategy < 1 || strategy > 3) { // Check if the strategy number is 1, 2, or 3
                         throw new IllegalArgumentException("Please enter a valid strategy number (1, 2, or 3).");
                     }
+                    txtStrategy.setText("");
                     String winner = Elections.main(strategy); // If valid, pass it to the main method
                     txtWinner.setText(winner); // Display winner name
                 } catch (NumberFormatException ex) {
