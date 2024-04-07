@@ -10,7 +10,7 @@ public class volby {
         }
     }
 
-    public void volby(){
+    public void volby(int strategy){
         State[] staty = new State[50];
         staty[0] = new State("Alabama", 50, 7, this);// pocet ludi / 100000 (stotisic) je to z wikipedie z roku 2020
         staty[1] = new State("Alaska", 7, 1, this);
@@ -70,7 +70,24 @@ public class volby {
         // Now, setting the universal voting strategy for all states.
         // For example, here we set it to new RepublicanMajorityStrategy();
         // But you can easily switch it to new DemocraticMajorityStrategy() or new EqualStrategy()
-        universalVotingStrategy = new RepublicanMajorityStrategy();
+//        universalVotingStrategy = new RepublicanMajorityStrategy();
+        switch(strategy) {
+            case 1:
+                this.universalVotingStrategy = new RepublicanMajorityStrategy();
+                break;
+            case 2:
+                this.universalVotingStrategy = new DemocraticMajorityStrategy();
+                break;
+            case 3:
+                this.universalVotingStrategy = new EqualStrategy();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid strategy number. Please choose 1, 2, or 3.");
+        }
+
+
+
+
 
         candidates[0] = new Candidate("Demokrat Stefn", "Democratic");
         candidates[1] = new Candidate("Republikan Jozko", "Republican");

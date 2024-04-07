@@ -13,9 +13,20 @@ public class GUI {
         StartSim.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                String winner = Elections.main(null);
-                txtWinner.setText(winner);
+                try {
+                    int strategy = Integer.parseInt(txtStrategy.getText()); // Try parsing the strategy number
+                    if (strategy < 1 || strategy > 3) { // Check if the strategy number is 1, 2, or 3
+                        throw new IllegalArgumentException("Please enter a valid strategy number (1, 2, or 3).");
+                    }
+                    String winner = Elections.main(strategy); // If valid, pass it to the main method
+                    txtWinner.setText(winner); // Display winner name
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                    txtStrategy.requestFocus(); // Focus back to the input field
+                } catch (IllegalArgumentException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+                    txtStrategy.requestFocus(); // Focus back to the input field
+                }
             }
         });
     }
