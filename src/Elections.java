@@ -1,10 +1,11 @@
 public class Elections {
 
 
-    public static void main(String[] args) {
+    public static String main(String[] args) {
 
         volby volby = new volby();
         volby.volby();
+        return volby.determineWinner();
 
 
     }

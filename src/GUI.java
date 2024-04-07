@@ -6,6 +6,7 @@ public class GUI {
     private JPanel panelMain;
     private JButton StartSim;
     private JTextField txtStrategy;
+    private JTextField txtWinner;
 
 
     public GUI() {
@@ -13,7 +14,8 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Elections.main(null);
+                String winner = Elections.main(null);
+                txtWinner.setText(winner);
             }
         });
     }

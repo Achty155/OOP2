@@ -1,6 +1,15 @@
 public class volby {
     public  Candidate[] candidates = new Candidate[2];
     public VotingStrategy universalVotingStrategy; // This is the universal strategy for all states.
+
+    public String determineWinner() {
+        if(candidates[0].getVotes() > candidates[1].getVotes()) {
+            return candidates[0].getName();
+        } else {
+            return candidates[1].getName();
+        }
+    }
+
     public void volby(){
         State[] staty = new State[50];
         staty[0] = new State("Alabama", 50, 7, this);// pocet ludi / 100000 (stotisic) je to z wikipedie z roku 2020
@@ -81,12 +90,11 @@ public class volby {
 
 
 
-
-        if(candidates[0].getVotes() > candidates[1].getVotes()) {
-            System.out.println("Vyhral demokrat");
-        } else {
-            System.out.println("Vyhral republikan");
-
-        }
+//        if(candidates[0].getVotes() > candidates[1].getVotes()) {
+//            System.out.println("Vyhral demokrat");
+//        } else {
+//            System.out.println("Vyhral republikan");
+//
+//        }
     }
 }
