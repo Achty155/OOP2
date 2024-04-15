@@ -42,7 +42,7 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 JFrame graphs = new JFrame("Graphs");
 
-//                graphs.setContentPane(new Graphs(staty).getPanel1());
+                graphs.setContentPane(new Graphs(staty).getPanel1());
                 graphs.setTitle("Graphs");
                 graphs.setSize(600, 400);
                 graphs.setVisible(true);
