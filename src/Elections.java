@@ -1,9 +1,9 @@
 public class Elections {
 
+    volby volby;
+    public String Hlavni(int strategy) {
 
-    public static String main(int strategy) {
-
-        volby volby = new volby();
+        volby = new volby();
         volby.volby(strategy);
         return volby.determineWinner();
 

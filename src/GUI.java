@@ -10,9 +10,11 @@ public class GUI {
     private JButton MapOfStates;
     private JButton Graphs;
 
+    public Elections elections;
 
 
     public GUI() {
+        elections = new Elections();
         StartSim.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -22,7 +24,7 @@ public class GUI {
                         throw new IllegalArgumentException("Please enter a valid strategy number (1, 2, or 3).");
                     }
                     txtStrategy.setText("");
-                    String winner = Elections.main(strategy); // If valid, pass it to the main method
+                    String winner = elections.Hlavni(strategy); // If valid, pass it to the main method
                     txtWinner.setText(winner); // Display winner name
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);
@@ -34,26 +36,18 @@ public class GUI {
             }
         });
 
-
-
-
         Graphs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame graphs = new JFrame("Graphs");
 
-                graphs.setContentPane(new Graphs(staty).getPanel1());
-                graphs.setTitle("Graphs");
-                graphs.setSize(600, 400);
-                graphs.setVisible(true);
-                graphs.setLocationRelativeTo(null);
+                Graphs graphs = new Graphs(elections.volby.staty);
+                graphs.graphsUI();
             }
         });
     }
 
 
     public static void main(String[] args) {
-
         JFrame frame = new JFrame("GUI");
         frame.setContentPane(new GUI().panelMain);
         frame.setTitle("GUI");
