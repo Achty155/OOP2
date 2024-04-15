@@ -7,6 +7,8 @@ public class GUI {
     private JButton StartSim;
     private JTextField txtStrategy;
     private JTextField txtWinner;
+    private JButton MapOfStates;
+    private JButton Graphs;
 
 
     public GUI() {
@@ -30,14 +32,36 @@ public class GUI {
                 }
             }
         });
+
+
+
+
+        Graphs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame graphWindow = new JFrame("Graph Display");
+                graphWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                graphWindow.setSize(400, 300);  // Set the size of the new window
+
+                // Add content to the new window here
+                JLabel label = new JLabel("Graph will be displayed here", SwingConstants.CENTER);
+                graphWindow.add(label);
+
+                graphWindow.setLocationRelativeTo(null);  // Center the new window
+                graphWindow.setVisible(true);  // Make the new window visible
+            }
+        });
     }
 
+
     public static void main(String[] args) {
+
         JFrame frame = new JFrame("GUI");
         frame.setContentPane(new GUI().panelMain);
         frame.setTitle("GUI");
-        frame.setSize(300, 400);
+        frame.setSize(600, 400);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
