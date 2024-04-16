@@ -41,7 +41,7 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
 
                 Graphs graphs = new Graphs(elections.volby.staty);
-                graphs.graphsUI();
+                graphs.graphsUI(elections.volby.staty);
             }
         });
     }

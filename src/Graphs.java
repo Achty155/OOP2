@@ -5,14 +5,20 @@ public class Graphs {
     private JComboBox comboBox1;
 
     public Graphs(State[] staty) {
-    for(int i = 0; i < 50; i++){
+   /* for(int i = 0; i < 50; i++){
         comboBox1.addItem(staty[i].getName());
 
+    }*/
     }
-   // panel1.add(comboBox1);
-    }
-    public void graphsUI(){
+    public void graphsUI(State[] staty){
         JFrame frame = new JFrame("Graphs");
+        panel1 = new JPanel(); //TODO Panel nebyl vytvořen a nadefinován, tudiž to "c" is null byl panel
+        for(int i = 0; i < 50; i++){
+            comboBox1.addItem(staty[i].getName());
+
+        } //TODO protože přidávání itemů do boxu v konstruktoru nezobrazovalo žádné itemy, tak nejspíš
+        //TODO bylo potřeba to dát až sem, aby byli již vytvořené a aktulizované
+        panel1.add(comboBox1);
         frame.setContentPane(panel1);
         frame.setTitle("Graphs");
         frame.setSize(600, 400);
