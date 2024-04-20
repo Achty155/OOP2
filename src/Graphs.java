@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import  org.jfree.chart.*;
 
 public class Graphs {
     private JPanel panel1;
@@ -9,8 +10,8 @@ public class Graphs {
     private JTextField textField1;
 
     public Graphs(State[] staty) {
+
         panel1 = new JPanel();
-        panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
         comboBox1 = new JComboBox<>();
         textField1 = new JTextField(20);
 
@@ -22,13 +23,23 @@ public class Graphs {
         panel1.add(textField1);
     }
 
-    public void graphsUI(State[] staty){
+
+
+
+
+
+        public void graphsUI(State[] staty){
         JFrame frame = new JFrame("Graphs");
         frame.setContentPane(panel1); // Set the content pane to the already initialized panel
         frame.setTitle("Graphs");
         frame.setSize(600, 400);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+
+
+
+
+
 
         comboBox1.addActionListener(new ActionListener() {
             @Override
