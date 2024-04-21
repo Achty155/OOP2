@@ -13,6 +13,7 @@ public class Graphs {
     private JPanel panel1;
     private JComboBox<String> comboBox1;
     private JTextField textField1;
+    private JTextField winnerTextField;
     private State[] states;
 
     public Graphs(State[] staty) {
@@ -39,6 +40,19 @@ public class Graphs {
         gbc.insets = new Insets(5, 0, 0, 0); // Add top padding
 
         panel1.add(comboBox1, gbc);
+
+        // Add text field to show winner
+        gbc.gridy = 2;
+        gbc.insets = new Insets(10, 0, 0, 0); // Add top padding
+
+        JLabel winnerLabel = new JLabel("Winner in state:");
+        winnerTextField = new JTextField(20);
+        winnerTextField.setEditable(false); // Make it non-editable
+
+        panel1.add(winnerLabel, gbc);
+
+        gbc.gridy = 3;
+        panel1.add(winnerTextField, gbc);
     }
 
     public void graphsUI(State[] staty) {
@@ -67,6 +81,8 @@ public class Graphs {
                 // Create bar chart
                 if (selectedStateObj != null) {
                     JFreeChart chart = createBarChart(selectedStateObj);
+                    String winner = selectedStateObj.getWinnerInState();
+                    winnerTextField.setText(winner);
                     displayChart(chart);
                 }
             }

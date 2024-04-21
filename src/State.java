@@ -5,7 +5,7 @@ public class State {
     private int NumOfElVOters;
     private int democraticVotes = 0; //test
     private int republicanVotes = 0;
-    private int winnerInState = 0;
+    private String winnerInState;
     private VotingStrategy votingStrategy;
     private volby volby;
 
@@ -29,9 +29,10 @@ public class State {
         return NumOfElVOters;
     }
 
-    public int getWinnerInState() {
+    public String getWinnerInState() {
         return winnerInState;
     }
+
     public void setName(String name) {
         Name = name;
     }
@@ -65,11 +66,11 @@ public class State {
 
 
         if (democraticVotes > republicanVotes) {
-            winnerInState = 0;
+            winnerInState = volby.candidates[0].getName();
             volby.candidates[0].setVotes(volby.candidates[0].getVotes() + NumOfElVOters);
             System.out.println("Democratic party won " + Name);
         } else {
-            winnerInState = 1;
+            winnerInState = volby.candidates[1].getName();
             volby.candidates[1].setVotes(volby.candidates[1].getVotes() + NumOfElVOters);
             System.out.println("Republican party won " + Name);
         }

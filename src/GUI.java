@@ -7,13 +7,13 @@ public class GUI {
     private JButton StartSim;
     private JTextField txtStrategy;
     private JTextField txtWinner;
-    private JButton MapOfStates;
     private JButton Graphs;
 
     public Elections elections;
 
 
     public GUI() {
+        txtWinner.setEditable(false);
         elections = new Elections();
         StartSim.addActionListener(new ActionListener() {
             @Override
