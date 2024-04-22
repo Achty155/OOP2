@@ -108,6 +108,8 @@ public class volby {
 
 
 
+
+
 //        if(candidates[0].getVotes() > candidates[1].getVotes()) {
 //            System.out.println("Vyhral demokrat");
 //        } else {

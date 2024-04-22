@@ -33,7 +33,6 @@ public class Graphs {
         for (int i = 0; i < 50; i++) {
             comboBox1.addItem(staty[i].getName());
         }
-
         panel1.add(label, gbc);
 
         gbc.gridy = 1;
