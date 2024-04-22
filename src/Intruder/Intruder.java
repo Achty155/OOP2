@@ -15,7 +15,6 @@ public class Intruder {
 
         calculationDestructedVotes();
         this.kolkoHlasovZnici = kolkoHlasovZnici * ligher.getPowerMultiplicator();
-        this.lighter = lighter;
     }
 
     protected void calculationDestructedVotes(){

@@ -12,11 +12,11 @@ public class DemocraticMajorityStrategy implements VotingStrategy {
             Voter voter = null;
             int vol = rand.nextInt(101);
             if(vol < 60){
-                voter = new Democratic_Voter();
+                voter = new Democratic_Voter(new EducationLevel());
             }else if(vol > 60 && vol < 80){
-                voter = new Republican_Voter();
+                voter = new Republican_Voter(new EducationLevel());
             }else if(vol > 80 && vol < 100){
-                voter = new Voter();
+                voter = new Voter(new EducationLevel());
             }
             if(voter != null) {
                 if (voter.getKohoVoli() == 0) {
