@@ -3,6 +3,7 @@ import Voter.*;
 import Weapons.*;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class RepublicanMajorityStrategy implements VotingStrategy {
 
@@ -30,7 +31,7 @@ public class RepublicanMajorityStrategy implements VotingStrategy {
         }
 
         Random rand = new Random();
-        for (int i = 0; i < rand.nextInt(10) + 1; i++) {
+        IntStream.range(0, rand.nextInt(10) + 1).forEach(i -> {
             Intruder intruder = null;
             int vol = rand.nextInt(101);
             if (vol < 20) {
@@ -44,7 +45,7 @@ public class RepublicanMajorityStrategy implements VotingStrategy {
             }
             int WhoToDestroy = rand.nextInt(2);
 
-            if(intruder != null){
+            if (intruder != null) {
                 if(WhoToDestroy == 0){
                     if((state.getDemocraticVotes() - intruder.getKolkoHlasovZnici()) >= 0){
                         state.setDemocraticVotes(state.getDemocraticVotes() - intruder.getKolkoHlasovZnici());
@@ -59,6 +60,6 @@ public class RepublicanMajorityStrategy implements VotingStrategy {
                     }
                 }
             }
-        }
+        });
     }
 }

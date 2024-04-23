@@ -3,9 +3,11 @@ import Intruder.Intruder;
 import Intruder.Strong_Intruder;
 import Intruder.Weak_Intruder;
 import Voter.Voter;
+import Weapons.Lighter;
 
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class EqualStrategy implements VotingStrategy {
     public void vote(State state) {
@@ -20,7 +22,7 @@ public class EqualStrategy implements VotingStrategy {
             }
         }
         Random rand = new Random();
-        for (int i = 0; i < rand.nextInt(10) + 1; i++) {
+        IntStream.range(0, rand.nextInt(10) + 1).forEach(i -> {
             Intruder intruder = null;
             int vol = rand.nextInt(101);
             if (vol < 20) {
@@ -28,13 +30,13 @@ public class EqualStrategy implements VotingStrategy {
             } else if (vol > 20 && vol < 25) {
                 intruder = new Strong_Intruder();
             } else if (vol > 25 && vol < 55) {
-                intruder = new Weak_Intruder();
+                intruder = new Weak_Intruder(new Lighter());
             } else if (vol > 55 && vol < 100) {
                 intruder = new Harmless_Intruder();
             }
             int WhoToDestroy = rand.nextInt(2);
 
-            if(intruder != null){
+            if (intruder != null) {
                 if(WhoToDestroy == 0){
                     if((state.getDemocraticVotes() - intruder.getKolkoHlasovZnici()) >= 0){
                         state.setDemocraticVotes(state.getDemocraticVotes() - intruder.getKolkoHlasovZnici());
@@ -49,6 +51,6 @@ public class EqualStrategy implements VotingStrategy {
                     }
                 }
             }
-        }
+        });
     }
 }
