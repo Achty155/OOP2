@@ -1,26 +1,21 @@
 package Intruder;
-import Weapons.*;
 
+import Weapons.*;
 import java.util.Random;
 
-public class Weak_Intruder extends Intruder{
-
-    private int kolkoHlasovZnici;
+public class Weak_Intruder extends Intruder implements IntruderInterface {
 
     public Weak_Intruder(){
-        calculationDestructedVotes();
+        super();
     }
 
-    public Weak_Intruder(Lighter ligher){
-        super(ligher);
-        calculationDestructedVotes();
-        this.kolkoHlasovZnici = kolkoHlasovZnici * ligher.getPowerMultiplicator();
+    public Weak_Intruder(Lighter lighter){
+        super(lighter);
     }
-
 
     @Override
-    protected void calculationDestructedVotes(){
+    public void calculationDestructedVotes(){
         Random rand = new Random();
-        this.setKolkoHlasovZnici(rand.nextInt(2));
+        this.setKolkoHlasovZnici(rand.nextInt(2)); // Weaker range
     }
 }

@@ -1,35 +1,34 @@
 package Intruder;
 
-import java.util.Random;
 import Weapons.*;
-public class Intruder {
-    private int kolkoHlasovZnici;
+import java.util.Random;
 
+public class Intruder implements IntruderInterface {
+    private int kolkoHlasovZnici;
     private Lighter lighter;
 
     public Intruder(){
         calculationDestructedVotes();
     }
 
-    public Intruder(Lighter ligher){
-
+    public Intruder(Lighter lighter){
+        this.lighter = lighter;
         calculationDestructedVotes();
-        this.kolkoHlasovZnici = kolkoHlasovZnici * ligher.getPowerMultiplicator();
+        this.kolkoHlasovZnici = this.kolkoHlasovZnici * lighter.getPowerMultiplicator();
     }
 
-    protected void calculationDestructedVotes(){
+    @Override
+    public void calculationDestructedVotes(){
         Random rand = new Random();
         this.kolkoHlasovZnici = rand.nextInt(16); // 0 to 15
-
     }
 
-
-
-
+    @Override
     public int getKolkoHlasovZnici() {
         return kolkoHlasovZnici;
     }
 
+    @Override
     public void setKolkoHlasovZnici(int kolkoHlasovZnici) {
         this.kolkoHlasovZnici = kolkoHlasovZnici;
     }

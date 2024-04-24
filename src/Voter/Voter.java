@@ -1,10 +1,9 @@
 package Voter;
 
 import Weapons.EducationLevel;
-
 import java.util.Random;
 
-public class Voter {
+public class Voter implements VoterInterface {
     private int kohoVoli;
 
     public Voter() {
@@ -13,24 +12,29 @@ public class Voter {
 
     public Voter(EducationLevel educationLevel){
         calculateVotes();
+        adjustVotingByEducation(educationLevel);
+    }
 
-        if(educationLevel.getEdLevel() == 0 && this.kohoVoli == 0){
+    public void adjustVotingByEducation(EducationLevel educationLevel) {
+        if (educationLevel.getEdLevel() == 0 && this.kohoVoli == 0) {
             this.kohoVoli = 1;
-        }
-        else if(educationLevel.getEdLevel() == 1 && this.kohoVoli == 1){
-            this.kohoVoli = kohoVoli = 0;
+        } else if (educationLevel.getEdLevel() == 1 && this.kohoVoli == 1) {
+            this.kohoVoli = 0;
         }
     }
 
-    protected void calculateVotes() {
+    @Override
+    public void calculateVotes() {
         Random rand = new Random();
         kohoVoli = rand.nextInt(2);
     }
 
+    @Override
     public int getKohoVoli() {
         return kohoVoli;
     }
 
+    @Override
     public void setKohoVoli(int kohoVoli) {
         this.kohoVoli = kohoVoli;
     }
