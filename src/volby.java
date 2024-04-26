@@ -1,7 +1,14 @@
+/**
+ * The volby class manages the election process.
+ */
 public class volby {
     public  Candidate[] candidates = new Candidate[2];
     public VotingStrategy universalVotingStrategy; // This is the universal strategy for all states.
 
+    /**
+     * Determines the winner of the election based on the number of votes received by each candidate.
+     * @return The name of the winning candidate.
+     */
     public State[] staty;
     public String determineWinner() {
         if(candidates[0].getVotes() > candidates[1].getVotes()) {
@@ -68,10 +75,10 @@ public class volby {
         staty[48] = new State("Wisconsin", 58, 8, this);
         staty[49] = new State("Wyoming", 5, 1, this);
 
-        // Now, setting the universal voting strategy for all states.
-        // For example, here we set it to new RepublicanMajorityStrategy();
-        // But you can easily switch it to new DemocraticMajorityStrategy() or new EqualStrategy()
-//        universalVotingStrategy = new RepublicanMajorityStrategy();
+        /**
+         * Executes the election process with the specified strategy.
+         * @param strategy The strategy to be used for voting.
+         */
         switch(strategy) {
             case 1:
                 this.universalVotingStrategy = new RepublicanMajorityStrategy();
