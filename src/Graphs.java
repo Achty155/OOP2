@@ -9,6 +9,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 
+/**
+ * The Graphs class represents a graphical user interface for displaying election data in the form of bar charts.
+ */
 public class Graphs {
     private JPanel panel1;
     private JComboBox<String> comboBox1;
@@ -16,6 +19,10 @@ public class Graphs {
     private JTextField winnerTextField;
     private State[] states;
 
+    /**
+     * Constructor for the Graphs class.
+     * @param staty An array of State objects representing different states in the election.
+     */
     public Graphs(State[] staty) {
         this.states = staty;
         panel1 = new JPanel(new GridBagLayout()); // Use GridBagLayout for precise component placement
@@ -54,6 +61,10 @@ public class Graphs {
         panel1.add(winnerTextField, gbc);
     }
 
+    /**
+     * Method to initialize and display the graphical user interface.
+     * @param staty An array of State objects representing different states in the election.
+     */
     public void graphsUI(State[] staty) {
         JFrame frame = new JFrame("Graphs");
         frame.setContentPane(panel1); // Set the content pane to the already initialized panel
@@ -88,6 +99,11 @@ public class Graphs {
         });
     }
 
+    /**
+     * Helper method to create a bar chart based on state data.
+     * @param state The State object representing the state for which the chart is created.
+     * @return A JFreeChart object representing the bar chart.
+     */
     private JFreeChart createBarChart(State state) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(state.getDemocraticVotes(), "Democratic", "Votes");
@@ -108,6 +124,10 @@ public class Graphs {
         return chart;
     }
 
+    /**
+     * Helper method to display the chart in a separate window.
+     * @param chart The JFreeChart object representing the chart to be displayed.
+     */
     private void displayChart(JFreeChart chart) {
         // Create a panel to display the chart
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -118,14 +138,26 @@ public class Graphs {
         chartFrame.setLocationRelativeTo(null);
     }
 
+    /**
+     * Getter for the panel1 property.
+     * @return The JPanel object.
+     */
     public JPanel getPanel1() {
         return panel1;
     }
 
+    /**
+     * Getter for the comboBox1 property.
+     * @return The JComboBox object.
+     */
     public JComboBox<String> getComboBox1() {
         return comboBox1;
     }
 
+    /**
+     * Setter for the comboBox1 property.
+     * @param comboBox1 The JComboBox object to set.
+     */
     public void setComboBox1(JComboBox<String> comboBox1) {
         this.comboBox1 = comboBox1;
     }

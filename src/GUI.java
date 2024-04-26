@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The GUI class represents the graphical user interface for the simulation.
+ */
 public class GUI {
     private JPanel panelMain;
     private JButton StartSim;
@@ -11,10 +14,14 @@ public class GUI {
 
     public Elections elections;
 
-
+    /**
+     * Constructor for the GUI class.
+     */
     public GUI() {
         txtWinner.setEditable(false);
         elections = new Elections();
+
+        // ActionListener for the Start Simulation button
         StartSim.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,17 +43,21 @@ public class GUI {
             }
         });
 
+        // ActionListener for the Graphs button
         Graphs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                // Open the Graphs window
                 Graphs graphs = new Graphs(elections.volby.staty);
                 graphs.graphsUI(elections.volby.staty);
             }
         });
     }
 
-
+    /**
+     * Main method to initialize and display the GUI.
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame("GUI");
         frame.setContentPane(new GUI().panelMain);
