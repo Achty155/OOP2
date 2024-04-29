@@ -3,33 +3,23 @@ import Voter.*;
 import Weapons.*;
 
 import java.util.Random;
-import java.util.stream.IntStream;
 
-/**
- * The RepublicanMajorityStrategy class implements a voting strategy where the majority of voters vote for the Republican party.
- */
 public class RepublicanMajorityStrategy implements VotingStrategy {
 
-    /**
-     * Executes the voting strategy for the given state.
-     * @param state The state for which the voting strategy is applied.
-     */
+
     public void vote(State state) {
 
-        // Loop through the voters in the state
         for (int i = 0; i < state.getNumOfVoters(); i++) {
             Random rand = new Random();
             Voter voter = null;
             int vol = rand.nextInt(101);
-            // Generate a random value and assign voter based on the percentage
             if (vol < 60) {
-                voter = new Republican_Voter(new EducationLevel());
+                voter = new Republican_Voter();
             } else if (vol > 60 && vol < 80) {
-                voter = new Democratic_Voter(new EducationLevel());
+                voter = new Democratic_Voter();
             } else if (vol > 80 && vol < 100) {
-                voter = new Voter(new EducationLevel());
+                voter = new Voter();
             }
-            // Increment the vote count based on the voter's choice
             if (voter != null) {
                 if (voter.getKohoVoli() == 0) {
                     state.setDemocraticVotes(state.getDemocraticVotes() + 1);
@@ -39,12 +29,10 @@ public class RepublicanMajorityStrategy implements VotingStrategy {
             }
         }
 
-        // Generate intruders and simulate their impact on votes
         Random rand = new Random();
-        IntStream.range(0, rand.nextInt(10) + 1).forEach(i -> {
+        for (int i = 0; i < rand.nextInt(10) + 1; i++) {
             Intruder intruder = null;
             int vol = rand.nextInt(101);
-            // Assign intruder based on the percentage
             if (vol < 20) {
                 intruder = new Intruder();
             } else if (vol > 20 && vol < 25) {
@@ -54,10 +42,9 @@ public class RepublicanMajorityStrategy implements VotingStrategy {
             } else if (vol > 55 && vol < 100) {
                 intruder = new Harmless_Intruder();
             }
-            // Determine which party's votes to decrease based on the intruder's choice
             int WhoToDestroy = rand.nextInt(2);
 
-            if (intruder != null) {
+            if(intruder != null){
                 if(WhoToDestroy == 0){
                     if((state.getDemocraticVotes() - intruder.getKolkoHlasovZnici()) >= 0){
                         state.setDemocraticVotes(state.getDemocraticVotes() - intruder.getKolkoHlasovZnici());
@@ -72,6 +59,6 @@ public class RepublicanMajorityStrategy implements VotingStrategy {
                     }
                 }
             }
-        });
+        }
     }
 }
